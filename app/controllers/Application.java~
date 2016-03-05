@@ -12,8 +12,11 @@ public class Application extends Controller {
     }
 
     public Result Courses(){
-        return ok(Courses.render());
-
+	    return ok(
+             Class.forName("views.html.Courses")
+                  .getMethod("render")
+                  .invoke(null)
+);
     }
 
 }

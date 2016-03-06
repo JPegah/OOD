@@ -12,8 +12,7 @@ public class Application extends Controller {
     }
 
     public Result Courses(){
-        return ok(Courses.render());
-
+        return ok(Courses.render("hi"));
+//        return renderTemplate(Courses.scala.html);
     }
-
 }

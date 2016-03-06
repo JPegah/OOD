@@ -1,0 +1,47 @@
+@(title:String)(extraMenu: Html)(body: Html)
+
+@BaseUser(title){
+<div class="main">
+    <div class="leftBar col-md-2">
+        <table class="table table-hover" dir="rtl">
+            <tr><td>
+                منابع
+            </td></tr>
+            <tr><td>
+                دستیاران
+            </td></tr>
+            <tr><td>
+                لینک های کمکی
+            </td></tr>
+            <tr><td>
+                پروژه ها
+            </td></tr>
+            <tr><td>
+                تمرین ها
+            </td></tr>
+            <tr><td>
+                آزمون ها
+            </td></tr>
+            <tr><td>
+                نمرات
+            </td></tr>
+            <tr><td>
+                برنامه تمرین ها
+            </td></tr>
+            <tr><td>
+                برنامه درس
+            </td></tr>
+            <tr><td>
+                شرح جلسات
+            </td></tr>
+            @extraMenu
+            <tr><td>
+                بازخوردها
+            </td></tr>
+        </table>
+    </div>
+</div>
+
+@body
+
+}

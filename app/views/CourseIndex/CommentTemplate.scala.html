@@ -1,0 +1,34 @@
+@(title:String)(comments: Html)
+@CourseTemplate(title){
+<h1></h1>
+}{
+<div class="rightBar col-md-7 col-md-offset">
+<span class="dropdown middleTitle">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      مشاهده نظرات
+      <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="#">پروژه ها</a></li>
+      <li><a href="#">تمرین ها</a></li>
+      <li><a href="#">امتحان ها</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">منبع</a></li>
+  </ul>
+</span>
+    <span class="dropdown middleTitle">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      ثبت نظر
+      <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="#">پروژه ها</a></li>
+      <li><a href="#">تمرین ها</a></li>
+      <li><a href="#">امتحان ها</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">منبع</a></li>
+  </ul>
+</span>
+
+    @comments
+</div>

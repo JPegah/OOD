@@ -7,13 +7,15 @@ lazy val myProject = (project in file("."))
 
 scalaVersion := "2.11.6"
 
+val appDependencies = Seq(
+   "mysql" % "mysql-connector-java" % "5.1.18" 
+)
 
 libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs,
-  evolutions,
-  "mysql" % "mysql-connector-java" % "5.1.18" 
+  evolutions
 )
 
 // Play provides two styles of routers, one expects its actions to be injected, the

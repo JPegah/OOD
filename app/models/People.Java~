@@ -8,7 +8,7 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
-public class Student extends Model {
+public class People extends Model {
 
     @Id
     @Constraints.Min(10)

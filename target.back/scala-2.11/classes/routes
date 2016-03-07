@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+#GET     /                           controllers.Application.index()
+GET     /Courses		    controllers.Application.Courses()
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /LogIn                      controllers.Application.LogIn()
+#POST    /LogIn                      controllers.Application.LogIn()
+#GET     /ChangePass                controllers.Application.ChangePass()
+GET     /Course/:id/UploadBox                  controllers.Application.Upload(id: Long)
+GET     /profile/Message                    controllers.Application.MessageThread()
+GET     /Course/:id/CourseIndex                 controllers.Application.CourseIndex(id: Long)
+GET     /Course/:id/comment                    controllers.Application.Comment(id: Long)
+GET     /Course/:id/exam/:e_id                       controllers.Application.Exams(id:Long, e_id:Long)
+GET     /Course/:id/Project/:p_id                    controllers.Application.Projects(id:Long, p_id:Long)
+GET     /Course/:id/CourseDescription                  controllers.Application.CourseDescription(id: Long)
+GET     /Course/:id/Grades                             controllers.Application.Grades(id:Long)
+GET     /Course/:id/Project/:p_id                     controllers.Application.ProjectInd(id: Long, p_id: Long)
+GET     /Course/:id/Resources                          controllers.Application.Resources(id:Long)
+GET     /Course/:id/AddGrade                           controllers.Application.AddGrade(id:Long)
+GET     /Course/:id/EditGrades                          controllers.Application.EditGrades(id:Long)
+GET     /Course/:id/EditProject                        controllers.Application.EditProject(id:Long)
+GET     /Course/:id/EditResources                      controllers.Application.EditResources(id:Long)
+GET     /Course/:id/ProjectEdit/p_id                    controllers.Application.ProjectEdit(id:Long, p_id:Long)
+GET     /ForgetPass                                      controllers.Application.ForgetPass()
+GET     /profile/Inbox                                   controllers.Application.Inbox()
+GET     /Course/:id/newComment                           controllers.Application.newComment(id: Long)

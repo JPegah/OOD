@@ -36,7 +36,9 @@ public class Application extends Controller {
     }
 
     public Result Inbox(){
-        return ok(Inbox.render("صندوق پیام"));
+    	Long x = new Long(1);
+    	LogicInterface.f(x);
+        return ok(Inbox.render("صندوق پیام", LogicInterface.getUser(x)));
     }
 
     public Result Upload(Long id){

@@ -9,17 +9,17 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
-public class Course extends Model {
+public class CourseMap extends Model {
 
-    public User(Long id){
+    public CourseMap(Long id){
 		this.id = id;
     }
 
-    @OnetoMany()
-    Public Professor;
+    @OneToMany()
+    public Professor prof;
     
-    @OnetoMany()
-    Public Student ;
+    @OneToMany()
+    public Student stu;
     
 
     

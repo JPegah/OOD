@@ -12,8 +12,8 @@ import play.data.validation.*;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Professor extends User {
 
-    public Professor(){
-    
+    public Professor(Long id){
+    	super(id);
     }
     
     @OneToOne()

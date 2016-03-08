@@ -16,7 +16,7 @@ public class Student extends User {
     
     }
     
-    @OnetoOne()
+    @OneToOne()
     public User user;
     
     @Constraints.Min(10)

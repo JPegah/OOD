@@ -15,20 +15,20 @@ public class Application extends Controller {
 //    public Result index() {
 //        return ok(index.render("Your new application is ready."));
 //    }
-public static Result authenticate() {
+public Result authenticate() {
     Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
     return ok();
 }
     public String validate() {
-        if (User.authenticate(email, password) == null) {
-            return "Invalid user or password";
-        }
+        //if (User.authenticate(email, password) == null) {
+      //      return "Invalid user or password";
+        //}
         return null;
     }
 
-    public static Result authenticate() {
-        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-        return ok();
+//    public static Result authenticate() {
+//        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+//        return ok();
 //        if (loginForm.hasErrors()) {
 //            return badRequest(login.render(loginForm));
 //        } else {
@@ -38,7 +38,7 @@ public static Result authenticate() {
 //                    routes.Application.index()
 //            );
 //        }
-    }
+//    }
 
     public static class Login {
 
@@ -54,7 +54,9 @@ public static Result authenticate() {
     }
 
     public Result Courses(){
-        return ok(Courses.render("لیست دروس"));
+    	Long x = new Long(1);
+    	LogicInterface.f(x);
+        return ok(Courses.render("لیست دروس",LogicInterface.getUser(x)));
     }
 //
 //    public Result LogIn(){

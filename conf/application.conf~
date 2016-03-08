@@ -31,14 +31,35 @@ play.i18n.langs = [ "en" ]
 # By convention, the default datasource is named `default`
 #
 # db.default.driver=org.h2.Driver
+<<<<<<< HEAD
 # db.default.url="jdbc:h2:mem:play"
 # db.default.username=sa
 # db.default.password=""
 
+=======
+# db.default.url="jdbc:h2:mem:play;MODE:MYSQL;DB_CLOSE_DELAY=-1"
+# db.default.username=sa
+# db.default.password=""
+
+db.default.driver=com.mysql.jdbc.Driver
+db.default.url="jdbc:mysql:localhost:3306/OOD"
+db.default.username=laleh
+db.default.password="1234"
+
+>>>>>>> 791cb37d734fc7e6beefef85728659fc48a1bb54
 # Evolutions
 # ~~~~~
 # You can disable evolutions if needed
 # play.evolutions.enabled=false
+<<<<<<< HEAD
 
 # You can disable evolutions for a specific datasource if necessary
 # play.evolutions.db.default.enabled=false
+=======
+applyEvolutions.default=true
+
+# You can disable evolutions for a specific datasource if necessary
+# play.evolutions.db.default.enabled=false
+ebean.default = ["models.*"]
+
+>>>>>>> 791cb37d734fc7e6beefef85728659fc48a1bb54

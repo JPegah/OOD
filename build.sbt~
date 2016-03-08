@@ -2,6 +2,7 @@ name := """OOD-project"""
 
 version := "1.0-SNAPSHOT"
 
+<<<<<<< HEAD
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.11.6"
@@ -10,6 +11,22 @@ libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs
+=======
+lazy val myProject = (project in file("."))
+  .enablePlugins(PlayJava, PlayEbean)
+
+scalaVersion := "2.11.6"
+
+val appDependencies = Seq(
+   "mysql" % "mysql-connector-java" % "5.1.18" 
+)
+
+libraryDependencies ++= Seq(
+  javaJdbc,
+  cache,
+  javaWs,
+  evolutions
+>>>>>>> 791cb37d734fc7e6beefef85728659fc48a1bb54
 )
 
 // Play provides two styles of routers, one expects its actions to be injected, the

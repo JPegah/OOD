@@ -8,17 +8,21 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
-public class User extends Model {
+public class Student extends User {
 
-    public User(Long id){
+    public Student(Long id, String fname, String lname, String password, Spring eaddress){
         this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.password = password;
+        this.eaddress = eaddress;
     }
     
+    @OnetoOne()
+    Public User user;
     
-    @Id
     @Constraints.Min(10)
-    @Constraints.Required
-    public Long id;
+    public Long StudentID;
 
     @Constraints.Required
     public String fname;
@@ -32,11 +36,8 @@ public class User extends Model {
     @Constraints.Required
     public String eaddress;
 
-    //@Constraints.Required
-    //public long inboxID;
-
-   @Formats.DateTime(pattern="dd/MM/yyyy")
-    public Date dueDate = new Date();
+    @Constraints.Required
+    public long inboxID;
 
     public static Finder<Long, User> find = new Finder<Long,User>(User.class);
 }

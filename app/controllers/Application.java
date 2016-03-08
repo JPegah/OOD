@@ -28,15 +28,16 @@ public static Result authenticate() {
 
     public static Result authenticate() {
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-        if (loginForm.hasErrors()) {
-            return badRequest(login.render(loginForm));
-        } else {
-            session().clear();
-            session("email", loginForm.get().email);
-            return redirect(
-                    routes.Application.index()
-            );
-        }
+        return ok();
+//        if (loginForm.hasErrors()) {
+//            return badRequest(login.render(loginForm));
+//        } else {
+//            session().clear();
+//            session("email", loginForm.get().email);
+//            return redirect(
+//                    routes.Application.index()
+//            );
+//        }
     }
 
     public static class Login {

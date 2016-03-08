@@ -1,5 +1,6 @@
 package controllers;
 
+import LogicInterfaces.*;
 import play.*;
 import play.mvc.*;
 import play.data.Form;
@@ -14,15 +15,51 @@ public class Application extends Controller {
 //    public Result index() {
 //        return ok(index.render("Your new application is ready."));
 //    }
+public static Result authenticate() {
+    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+    return ok();
+}
+    public String validate() {
+        if (User.authenticate(email, password) == null) {
+            return "Invalid user or password";
+        }
+        return null;
+    }
+
+    public static Result authenticate() {
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+            return badRequest(login.render(loginForm));
+        } else {
+            session().clear();
+            session("email", loginForm.get().email);
+            return redirect(
+                    routes.Application.index()
+            );
+        }
+    }
+
+    public static class Login {
+
+        public String email;
+        public String password;
+
+    }
+
+    public static Result LogIn() {
+        return ok(
+                LogIn.render("ورود",Form.form(Login.class))
+        );
+    }
 
     public Result Courses(){
         return ok(Courses.render("لیست دروس"));
     }
-
-    public Result LogIn(){
-        return ok(LogIn.render("ورود"));
-    }
-
+//
+//    public Result LogIn(){
+//        return ok(LogIn.render("ورود"));
+//    }
+/*
     public Result ChangePass(){
         return ok(ChangePass.render("تغییر رمز"));
     }
@@ -32,17 +69,17 @@ public class Application extends Controller {
     }
 
     public Result MessageThread(){
-        return ok(MessageThread.render("ریسه ی ‍‍پیام"));
+        return ok(MessageThread.render("ریسه ی ‍‍پیام", LogicInterface.getUser(x)));
     }
 
     public Result Inbox(){
     	Long x = new Long(1);
     	LogicInterface.f(x);
-        return ok(Inbox.render("صندوق پیام", LogicInterface.getUser(1)));
+        return ok(Inbox.render("صندوق پیام", LogicInterface.getUser(x)));
     }
 
     public Result Upload(Long id){
-        return ok(UploadBox.render("صندوق بارگذاری"));
+        return ok(UploadBox.render("صندوق بارگذاری", LogicInterface.getUser(x)) );
     }
 
 //    public Result CourseIndex(Long id){
@@ -50,62 +87,62 @@ public class Application extends Controller {
 //    }
 
     public Result Comment(Long id){
-        return ok(views.html.CourseIndex.comment.render("مشاهده نظرات"));
+        return ok(views.html.CourseIndex.comment.render("مشاهده نظرات",LogicInterface.getUser(x)));
     }
 
     public Result newComment(Long id){
-        return ok(views.html.CourseIndex.newComment.render("افزودن نظر"));
+        return ok(views.html.CourseIndex.newComment.render("افزودن نظر",LogicInterface.getUser(x)));
     }
 
     public Result CourseIndex(Long id){
-        return ok(views.html.CourseIndex.courseIndex.render("نمایه درس"));
+        return ok(views.html.CourseIndex.courseIndex.render("نمایه درس",LogicInterface.getUser(x)));
     }
 
     public Result Exams(Long id, Long eId){
-        return ok(views.html.CourseIndex.Exams.render("امتحانات"));
+        return ok(views.html.CourseIndex.Exams.render("امتحانات",LogicInterface.getUser(x)));
     }
 
     public Result Projects(Long id, Long pId){
-        return ok(views.html.CourseIndex.Projects.render("پروژه ها"));
+        return ok(views.html.CourseIndex.Projects.render("پروژه ها",LogicInterface.getUser(x)));
     }
 
     public Result CourseDescription(Long id){
-        return ok(views.html.CourseIndex.StudentView.CourseDesc.render("طرح  درس"));
+        return ok(views.html.CourseIndex.StudentView.CourseDesc.render("طرح  درس",LogicInterface.getUser(x)));
     }
 
     public Result Grades(Long id){
-        return ok(views.html.CourseIndex.StudentView.Grades.render("مشاهده نمرات"));
+        return ok(views.html.CourseIndex.StudentView.Grades.render("مشاهده نمرات",LogicInterface.getUser(x)));
     }
 
     public Result ProjectInd(Long id, Long p_id){
-        return ok(views.html.CourseIndex.StudentView.ProjectInd.render("نمایه پروژه"));
+        return ok(views.html.CourseIndex.StudentView.ProjectInd.render("نمایه پروژه",LogicInterface.getUser(x)));
     }
     public Result Resources(Long id){
-        return ok(views.html.CourseIndex.StudentView.Resources.render("منابع درس"));
+        return ok(views.html.CourseIndex.StudentView.Resources.render("منابع درس",LogicInterface.getUser(x)));
     }
 
     public Result AddGrade(Long id){
-        return ok(views.html.CourseIndex.ProfView.AddGrade.render("افزودن نمره"));
+        return ok(views.html.CourseIndex.ProfView.AddGrade.render("افزودن نمره",LogicInterface.getUser(x)));
     }
 
     public Result EditDescription(Long id){
-        return ok(views.html.CourseIndex.ProfView.EditDescription.render("ویرایش طرح درس"));
+        return ok(views.html.CourseIndex.ProfView.EditDescription.render("ویرایش طرح درس",LogicInterface.getUser(x)));
     }
 
     public Result EditGrades(Long id){
-        return ok(views.html.CourseIndex.ProfView.EditGrades.render("ویرایش نمرات"));
+        return ok(views.html.CourseIndex.ProfView.EditGrades.render("ویرایش نمرات",LogicInterface.getUser(x)));
     }
     public Result EditProject(Long id){
-        return ok(views.html.CourseIndex.ProfView.EditProject.render("ویرایش پروژه"));
+        return ok(views.html.CourseIndex.ProfView.EditProject.render("ویرایش پروژه",LogicInterface.getUser(x)));
     }
 
     public Result EditResources(Long id){
-        return ok(views.html.CourseIndex.ProfView.EditResources.render("ویرایش منابع"));
+        return ok(views.html.CourseIndex.ProfView.EditResources.render("ویرایش منابع",LogicInterface.getUser(x)));
     }
 
     public Result ProjectEdit(Long id, Long p_id){
-        return ok(views.html.CourseIndex.ProfView.ProjectsEdit.render("ویرایش پروژه"));
+        return ok(views.html.CourseIndex.ProfView.ProjectsEdit.render("ویرایش پروژه",LogicInterface.getUser(x)));
     }
-
+*/
 }
 

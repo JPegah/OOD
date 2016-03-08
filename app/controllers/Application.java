@@ -46,7 +46,7 @@ public static Result authenticate() {
 
     }
 
-    public static Result LogIn() {
+    public Result LogIn() {
         return ok(
                 LogIn.render("ورود",Form.form(Login.class))
         );

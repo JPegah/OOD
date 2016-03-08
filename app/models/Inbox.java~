@@ -3,6 +3,7 @@ package models;
 /**
  * Created by pegah on 3/9/16.
  */
+
         import java.util.*;
         import javax.persistence.*;
 
@@ -12,14 +13,17 @@ package models;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Message extends Model {
+public class Inbox extends Model {
 
-    public Message(){
+    public Inbox(){
+
     }
 
     @Id
     @Constraints.Min(10)
     public Long id;
 
-    public static Finder<Long, Message> find = new Finder<Long,Message>(Message.class);
+
+
+    public static Finder<Long, Inbox> find = new Finder<Long,Inbox>(Inbox.class);
 }

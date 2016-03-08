@@ -1,3 +1,4 @@
+
 package models;
 
 import java.util.*;
@@ -10,13 +11,18 @@ import play.data.validation.*;
 @Entity
 public class Course extends Model {
 
-    public Course(Long id){
+    public User(Long id){
 		this.id = id;
     }
+
+    @OnetoMany()
+    Public Professor;
     
-    @Id
-    @Constraints.Min(10)
-    public Long id;
+    @OnetoMany()
+    Public Student ;
+    
+
+    
 
     public static Finder<Long, Course> find = new Finder<Long,Course>(Course.class);
 }

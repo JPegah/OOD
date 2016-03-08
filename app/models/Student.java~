@@ -8,36 +8,19 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
+@DiscriminatorValue("aStudent")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Student extends User {
 
-    public Student(Long id, String fname, String lname, String password, Spring eaddress){
-        this.id = id;
-        this.fname = fname;
-        this.lname = lname;
-        this.password = password;
-        this.eaddress = eaddress;
+    public Student(){
+    
     }
     
     @OnetoOne()
-    Public User user;
+    public User user;
     
     @Constraints.Min(10)
     public Long StudentID;
 
-    @Constraints.Required
-    public String fname;
-
-    @Constraints.Required
-    public String lname;
-
-    @Constraints.Required
-    public String password;
-
-    @Constraints.Required
-    public String eaddress;
-
-    @Constraints.Required
-    public long inboxID;
-
-    public static Finder<Long, User> find = new Finder<Long,User>(User.class);
+    public static Finder<Long, Student> find = new Finder<Long,Student>(Student.class);
 }

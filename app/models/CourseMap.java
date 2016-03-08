@@ -9,17 +9,19 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
-public class Course extends Model {
+public class CourseMap extends Model {
 
-    public User(Long id){
+    public CourseMap(Long id){
 		this.id = id;
     }
+
+    @OneToMany()
+    public Professor prof;
     
-    @OnetoMany()
-    Public Student student;
+    @OneToMany()
+    public Student stu;
     
-    @OnetoMany()
-    Public Professor professor;
+
     
 
     public static Finder<Long, Course> find = new Finder<Long,Course>(Course.class);

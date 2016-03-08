@@ -14,7 +14,7 @@ package models;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Message extends Model {
 
-    public Message(){
+    public MessageThread(){
     }
 
     @Id

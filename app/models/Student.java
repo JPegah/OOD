@@ -16,8 +16,8 @@ public class Student extends User {
     
     }
     
-    @OnetoOne()
-    Public User user;
+    @OneToOne()
+    public User user;
     
     @Constraints.Min(10)
     public Long StudentID;

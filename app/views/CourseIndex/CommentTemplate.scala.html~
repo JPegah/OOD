@@ -1,5 +1,5 @@
-@(title:String)(user:LogicClasses.Users)(comments: Html)
-@CourseTemplate(title)(user){
+@(title:String)(comments: Html)
+@CourseTemplate(title){
 <h1></h1>
 }{
 <div class="rightBar col-md-7 col-md-offset">

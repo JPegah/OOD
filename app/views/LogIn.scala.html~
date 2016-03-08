@@ -4,14 +4,20 @@
 <div class="rightBar col-md-4 col-md-offset  RTOL">
     @helper.form(routes.Application.authenticate()){
     <div class="input-group">
-
-@helper.inputText(form("email"),'_label -> "نام کاربری")
-
+<span>
+نام کاربری
+</span>
+@helper.inputText(Login("email")){
+<input type="text" class="form-control" placeholder="نام کاربری" aria-describedby="basic-addon1">
+}
 </div>
 
 <div class="input-group">
-	
-@helper.inputText(form("password"), '_label -> "گذرواژه")
+<span>
+گذرواژه
+</span>
+<input type="text" class="form-control" placeholder="گذرواژه" aria-describedby="basic-addon1">
+
 </div>
 <div>
 

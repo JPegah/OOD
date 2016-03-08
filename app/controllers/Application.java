@@ -16,16 +16,41 @@ public class Application extends Controller {
 //        return ok(index.render("Your new application is ready."));
 //    }
 public Result authenticate() {
-    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+	Form<Login> loginForm = Form.form(Login.class);
+    Login login = loginForm.bindFromRequest().get();
+    //Login user = new Login();
+//	Form <Login> u = Form.form(Login.class).bindFromRequest();
+//	Login login = u.get();
+//	login.save();
+    System.out.print(login.email);
     return ok();
 }
-    public String validate() {
-        System.out.print("hello pegah");
+
+public static class Login {
+     public String email;
+     public String password;
+
+	public String getEmail(){
+		return email;
+	}
+	public String getPassword(){
+		return password;
+	}
+	public void setEmail(String email){
+		this.email = email;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
+}
+
+public String validate() {
+    System.out.print("hello pegah");
         //if (User.authenticate(email, password) == null) {
       //      return "Invalid user or password";
         //}
-        return null;
-    }
+    return null;
+ }
 
 //    public static Result authenticate() {
 //        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
@@ -41,12 +66,6 @@ public Result authenticate() {
 //        }
 //    }
 
-    public static class Login {
-
-        public String email;
-        public String password;
-
-    }
 
     public Result LogIn() {
         return ok(

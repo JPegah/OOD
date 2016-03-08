@@ -18,10 +18,6 @@ public class Application extends Controller {
 public Result authenticate() {
 	Form<Login> loginForm = Form.form(Login.class);
     Login login = loginForm.bindFromRequest().get();
-    //Login user = new Login();
-//	Form <Login> u = Form.form(Login.class).bindFromRequest();
-//	Login login = u.get();
-//	login.save();
     System.out.print(login.email);
     return ok();
 }
@@ -30,41 +26,27 @@ public static class Login {
      public String email;
      public String password;
 
-	public String getEmail(){
-		return email;
-	}
-	public String getPassword(){
-		return password;
-	}
-	public void setEmail(String email){
-		this.email = email;
-	}
-	public void setPassword(String password){
-		this.password = password;
-	}
-}
 
-public String validate() {
-    System.out.print("hello pegah");
-        //if (User.authenticate(email, password) == null) {
-      //      return "Invalid user or password";
-        //}
-    return null;
- }
-
-//    public static Result authenticate() {
-//        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-//        return ok();
-//        if (loginForm.hasErrors()) {
-//            return badRequest(login.render(loginForm));
-//        } else {
-//            session().clear();
-//            session("email", loginForm.get().email);
-//            return redirect(
+    public static Result authenticate() {
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        return ok();
+        if (loginForm.hasErrors()) {
+            return badRequest(login.render(loginForm));
+        } else {
+            session().clear();
+            session("email", loginForm.get().email);
+ //           return redirect(
 //                    routes.Application.index()
 //            );
-//        }
-//    }
+        }
+    }
+	
+
+	public String validate() {
+		if (Login.authenticate(email, password) == null)
+			return "Invalid user or password";
+		return null;
+	}
 
 
     public Result LogIn() {

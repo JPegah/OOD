@@ -3,8 +3,6 @@ package models;
 /**
  * Created by pegah on 3/9/16.
  */
-package models;
-
         import java.util.*;
         import javax.persistence.*;
 

@@ -20,6 +20,7 @@ public Result authenticate() {
     return ok();
 }
     public String validate() {
+        System.out.print("hello pegah");
         //if (User.authenticate(email, password) == null) {
       //      return "Invalid user or password";
         //}

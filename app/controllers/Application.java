@@ -46,19 +46,19 @@ public static Result authenticate() {
 
     }
 
-    public static Result login() {
+    public static Result LogIn() {
         return ok(
-                login.render(Form.form(Login.class))
+                LogIn.render("ورود",Form.form(Login.class))
         );
     }
 
     public Result Courses(){
         return ok(Courses.render("لیست دروس"));
     }
-
-    public Result LogIn(){
-        return ok(LogIn.render("ورود"));
-    }
+//
+//    public Result LogIn(){
+//        return ok(LogIn.render("ورود"));
+//    }
 /*
     public Result ChangePass(){
         return ok(ChangePass.render("تغییر رمز"));

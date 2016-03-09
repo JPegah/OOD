@@ -1,4 +1,4 @@
-@(title:String)(main: Html)
+@(title:String)(user: LogicClasses.Users)(main: Html)
 
 @BaseTemplate(title){
 <nav class="navbar navbar-default">
@@ -21,7 +21,11 @@
                     خروح
                 </a></li>
                 <li><a>
-                    شما در قالب دانشجو وارد سایت شده اید.
+                    شما در قالب
+@user.getFirstName()
+                    @user.getLastName()
+                    وارد سایت شده اید.
+
                 </a></li>
 
             </ul>

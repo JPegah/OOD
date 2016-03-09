@@ -6,8 +6,8 @@
 #GET     /                           controllers.Application.index()
 #GET     /Courses		    controllers.Application.Courses()
 # Map static resources from the /public folder to the /assets URL path
-#GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
-GET     /LogIn                      controllers.Application.logIn()
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /LogIn                      controllers.Application.LogIn()
 POST    /LogIn                      controllers.Application.LogIn()
 #GET     /ChangePass                controllers.Application.ChangePass()
 #GET     /Course/:id/UploadBox                  controllers.Application.Upload(id: Long)

@@ -1,8 +1,9 @@
-@(title:String)
+@(title:String)(form: Form[Application.Login])
 @FormTemplate(title){
 
 <div class="rightBar col-md-4 col-md-offset  RTOL">
-<div class="input-group">
+    @helper.form(routes.Application.authenticate){
+    <div class="input-group">
 <span>
 نام کاربری
 </span>
@@ -29,8 +30,7 @@
 
 </div>
 
-
+}
 </div>
 
-</div>
 }

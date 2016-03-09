@@ -12,9 +12,13 @@ public class LogicInterface {
  	u.setPassword(t.id);
  	return u;
     }
-    
+
+
+    // creates sample objects for db... called in when first page loaded
     public static void f(Long i){
     	User u = new User(i);
     	u.save();
     }
+
+
 }

@@ -1,5 +1,6 @@
 package controllers;
 
+import LogicInterfaces.*;
 import play.*;
 import play.mvc.*;
 import play.data.Form;

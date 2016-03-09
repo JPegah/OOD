@@ -1,6 +1,6 @@
-package controllers;
+package LogicInterfaces;
 
-import LogicClasses.Users;
+import LogicClasses.*;
 import models.User;
 /**
  * Created by pegah on 3/8/16.

@@ -56,10 +56,10 @@ public static Result authenticate() {
         return ok(Courses.render("لیست دروس"));
     }
 
- /*   public Result LogIn(){
+    public Result LogIn(){
         return ok(LogIn.render("ورود"));
     }
-
+/*
     public Result ChangePass(){
         return ok(ChangePass.render("تغییر رمز"));
     }

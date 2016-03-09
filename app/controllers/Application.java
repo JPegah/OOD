@@ -6,7 +6,7 @@ import play.mvc.*;
 import play.data.Form;
 
 import views.html.*;
-
+import java.util.*;
 
 
 
@@ -15,45 +15,43 @@ public class Application extends Controller {
 //    public Result index() {
 //        return ok(index.render("Your new application is ready."));
 //    }
-public Result authenticate() {
-	Form<Login> loginForm = Form.form(Login.class);
-    Login login = loginForm.bindFromRequest().get();
-    System.out.print(login.email);
-    return ok();
-}
-
-
 public static class Login {
-    public String email;
-    public String password;
+     public String email;
+     public String password;
 
-    public static String authenticate(String email, String password){
-        if (validateUser(email, password))
-            return null;
-        return "Invalid username or password";
-    }
 
-}
     public static Result authenticate() {
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         return ok();
-//        if (loginForm.hasErrors()) {
-//            return badRequest(login.render(loginForm));
-//        } else {
-//            session().clear();
-//            session("email", loginForm.get().email);
-//            return redirect(
+     //   if (loginForm.hasErrors()) {
+           // return badRequest(login.render(loginForm));
+    //    } else {
+         //   session().clear();
+       //     session("email", loginForm.get().email);
+ //           retusrn redirect(
 //                    routes.Application.index()
 //            );
-//        }
+      //  }
     }
+}
 
 
-	public String validate() {
-		if (Login.authenticate(email, password) == null)
-			return "Invalid user or password";
-		return null;
-	}
+public Result authenticate() {
+    System.out.println(request().body().asFormUrlEncoded());
+    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+
+    if (loginForm.hasErrors()){
+        System.err.println("errors");
+    }
+    if (loginForm.data() != null)
+        System.out.println(loginForm.data().get("password"));
+    
+
+        if (LogicInterface.validateUser(loginForm.data().get("email"), loginForm.data().get("password")))
+            session("userName", loginForm.data().get("email"));
+
+        return ok();
+    }
 
 
     public Result LogIn() {
@@ -63,19 +61,22 @@ public static class Login {
     }
 
     public Result Courses(){
+        String value = session().get("userName");
+        System.out.println(value);
     	Long x = new Long(1);
-    	LogicInterface.f(x);
-        return ok(Courses.render("لیست دروس",LogicInterface.getUser(x)));
+        return ok();
+    //	LogicInterface.f(x);
+     //   return ok(Courses.render("لیست دروس",LogicInterface.getUser(x)));
     }
 //
 //    public Result LogIn(){
 //        return ok(LogIn.render("ورود"));
 //    }
-/*
+
     public Result ChangePass(){
         return ok(ChangePass.render("تغییر رمز"));
     }
-
+/*
     public Result ForgetPass(){
         return ok(ForgetPass.render("فراموشی رمز"));
     }
@@ -155,6 +156,7 @@ public static class Login {
     public Result ProjectEdit(Long id, Long p_id){
         return ok(views.html.CourseIndex.ProfView.ProjectsEdit.render("ویرایش پروژه",LogicInterface.getUser(x)));
     }
-*/
+
+}*/
 }
 

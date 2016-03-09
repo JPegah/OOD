@@ -13,7 +13,7 @@ import play.data.validation.*;
 public class Student extends User {
 
     public Student(Long id){
-    	super(id);
+    	super(id, "", "", "", "");
     }
     
     @OneToOne()

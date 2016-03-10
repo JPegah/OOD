@@ -7,6 +7,7 @@
 GET     /Courses		    controllers.Application.Courses()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
 GET     /LogIn                      controllers.Application.LogIn()
 POST    /LogIn                      controllers.Application.authenticate()
 GET     /ChangePass                controllers.Application.ChangePass()

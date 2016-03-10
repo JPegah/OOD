@@ -17,13 +17,14 @@ public class Application extends Controller {
 //    }
 public Result authenticate() {
     Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+
     return ok();
 }
     public String validate() {
         System.out.print("hello pegah");
         //if (User.authenticate(email, password) == null) {
       //      return "Invalid user or password";
-        //}
+       // }
         return null;
     }
 

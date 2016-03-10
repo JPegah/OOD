@@ -16,10 +16,13 @@ public class Application extends Controller {
 //        return ok(index.render("Your new application is ready."));
 //    }
 public Result authenticate() {
-    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-    return ok();
+	Form<Login> loginForm = Form.form(Login.class);
+    Login login = loginForm.bindFromRequest().get();
+    System.out.print(login.email);
+    return ok("");
 }
     public String validate() {
+        System.out.print("hello pegah");
         //if (User.authenticate(email, password) == null) {
       //      return "Invalid user or password";
         //}
@@ -56,7 +59,7 @@ public Result authenticate() {
     public Result Courses(){
     	Long x = new Long(1);
     	LogicInterface.f(x);
-        return ok(Courses.render("لیست دروس",LogicInterface.getUser(x))));
+        return ok(Courses.render("لیست دروس",LogicInterface.getUser(x)));
     }
 //
 //    public Result LogIn(){

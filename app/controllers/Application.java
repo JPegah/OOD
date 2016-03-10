@@ -16,38 +16,39 @@ public class Application extends Controller {
 //        return ok(index.render("Your new application is ready."));
 //    }
 public Result authenticate() {
-    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-
+	Form<Login> loginForm = Form.form(Login.class);
+    Login login = loginForm.bindFromRequest().get();
+    System.out.print(login.email);
     return ok();
 }
-    public String validate() {
-        System.out.print("hello pegah");
-        //if (User.authenticate(email, password) == null) {
-      //      return "Invalid user or password";
-       // }
-        return null;
-    }
 
-//    public static Result authenticate() {
-//        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-//        return ok();
-//        if (loginForm.hasErrors()) {
-//            return badRequest(login.render(loginForm));
-//        } else {
-//            session().clear();
-//            session("email", loginForm.get().email);
-//            return redirect(
+
+public static class Login {
+     public String email;
+     public String password;
+
+
+    public static Result authenticate() {
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        return ok();
+        if (loginForm.hasErrors()) {
+            return badRequest(login.render(loginForm));
+        } else {
+            session().clear();
+            session("email", loginForm.get().email);
+ //           return redirect(
 //                    routes.Application.index()
 //            );
-//        }
-//    }
-
-    public static class Login {
-
-        public String email;
-        public String password;
-
+        }
     }
+	
+
+	public String validate() {
+		if (Login.authenticate(email, password) == null)
+			return "Invalid user or password";
+		return null;
+	}
+
 
     public Result LogIn() {
         return ok(

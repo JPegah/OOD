@@ -1,12 +1,12 @@
 package controllers;
 
-import LogicInterfaces.*;
-import play.*;
-import play.mvc.*;
 import play.data.Form;
-
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.ChangePass;
+import views.html.LogIn;
 import views.html.*;
-import java.util.*;
+import LogicInterfaces.LogicInterface;
 
 
 

@@ -9,12 +9,12 @@
 <div class="courseInd">
     <span class="chat">
     	@thread.getLastMessage().getContent()
-    </span>
+    	    </span>
     <span class="user">
         @thread.getSubject()
     </span>
     <span class="user">
-	@thread.getLastMessage()	
+		@thread.getLastMessage().getWriter()
     </span>
 </div>
 }

@@ -12,6 +12,7 @@ import models.Student;
 import java.util.List;
 import java.util.ArrayList;
 
+
 /**
  * Created by pegah on 3/8/16.
  */
@@ -29,7 +30,21 @@ public class LogicInterface {
     	MailSystemLogic mail = new MailSystemLogic();
     	for (int i = 0; i < threads.size(); i++){
     		MessageThreadLogic mtl = new MessageThreadLogic(threads.get(i).subject);
-//    		MessageThread mt = threads.get(i);
+    		MessageThread mt = threads.get(i);
+    		List<Message> messages = Message.find.where().eq("thread", mt).findList();
+    		//here is temporary user:
+    		MyUser tmpuser = MyUser.find.byId(id);
+    		Users u = new Users();
+    		u.setFirstName(tmpuser.fname);
+    		u.setLastName(tmpuser.lname);
+    		u.setEmail(tmpuser.eaddress);
+    		
+    		for (int j = 0;j < messages.size(); j++){
+    			Message currentM = messages.get(j);
+    			MessageLogic mtmp = new MessageLogic(currentM.content, currentM.time, u);
+    			mtl.addMessage(mtmp);
+    		}
+    	
     		mail.addMessageThread(mtl);
     	}
     	

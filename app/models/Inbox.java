@@ -12,8 +12,10 @@ import java.util.*;
         import play.data.validation.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Inbox extends Model {
+	public Inbox(long id){
+		this.id = id;
+	}
 	
     @OneToOne()
     public MyUser user;
@@ -21,6 +23,7 @@ public class Inbox extends Model {
     @OneToMany()
     public MessageThread threads;
     
-    
+    @Id
+    public long id;
     public static Finder<Long, Inbox> find = new Finder<Long,Inbox>(Inbox.class);
 }

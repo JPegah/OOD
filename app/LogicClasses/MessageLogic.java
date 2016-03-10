@@ -13,4 +13,16 @@ public class MessageLogic {
         this.time = time;
         this.initiator = initiator;
     }
+    
+    public String getContent(){
+    	return this.content;
+    }
+    
+    public String getTime(){
+    	return this.time;
+    }
+    
+    public String getWriter(){
+    	return this.initiator.getFirstName() + " " + this.initiator.getLastName();
+    }
 }

@@ -1,33 +1,24 @@
+@(title:String)(user: LogicClasses.Users)(threads: List[LogicClasses.MessageThreadLogic])
 
-@(title:String)(user: LogicClasses.Users)
 @InboxTemplate(title)(user){
 
 <div class="rightBar col-md-7 col-md-offset">
 <div class="courseList">
+
+@for(thread <- threads){
 <div class="courseInd">
     <span class="chat">
-        hey look at new version of the project
+    	@thread.getLastMessage().getContent()
     </span>
     <span class="user">
-        project
+        @thread.getSubject()
     </span>
     <span class="user">
-	@user.getPassword();	
-        </span>
-
-
+	@thread.getLastMessage()	
+    </span>
 </div>
-    <div class="courseInd">
-    <span class="chat">
-        hey look at new version of the project
-    </span>
-        <span class="user">
-        project
-    </span>
-    <span class="user">
-        لاله
-        </span>
-        </div>
+}
+
 </div>
 </div>
 }

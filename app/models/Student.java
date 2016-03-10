@@ -1,9 +1,11 @@
 package models;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 import com.avaje.ebean.Model;
+
 import play.data.format.*;
 import play.data.validation.*;
 
@@ -12,12 +14,12 @@ import play.data.validation.*;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Student extends MyUser {
 
-    public Student(Long id){
-    	super(id, "", "", "", "");
+    public Student(Long id, String fname, String lname, String password, String eaddress){
+    	super(id, fname, lname, password, eaddress);
     }
-    
-    @OneToOne()
-    public MyUser user;
+//    
+//    @OneToOne()
+//    public MyUser user;
     
     @Constraints.Min(10)
     public Long StudentID;

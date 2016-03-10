@@ -42,6 +42,7 @@ create table grade (
 );
 
 create table inbox (
+  dtype                         varchar(10) not null,
   id                            bigint auto_increment not null,
   user_id                       bigint,
   constraint uq_inbox_user_id unique (user_id),
@@ -49,8 +50,8 @@ create table inbox (
 );
 
 create table message (
+  dtype                         varchar(10) not null,
   id                            bigint auto_increment not null,
-  thread_id                     bigint,
   content                       varchar(255),
   time                          varchar(255),
   writer                        varchar(255),
@@ -58,8 +59,8 @@ create table message (
 );
 
 create table message_thread (
+  dtype                         varchar(10) not null,
   id                            bigint auto_increment not null,
-  inbox_id                      bigint,
   subject                       varchar(255),
   constraint pk_message_thread primary key (id)
 );
@@ -72,7 +73,9 @@ create table my_user (
   password                      varchar(255),
   eaddress                      varchar(255),
   inbox_id                      bigint,
+  user_id                       bigint,
   student_id                    bigint,
+  constraint uq_my_user_user_id unique (user_id),
   constraint pk_my_user primary key (id)
 );
 
@@ -84,7 +87,7 @@ create table project (
 
 create table project_phase (
   id                            bigint auto_increment not null,
-  deadline                      varchar(255),
+  deadline                      datetime(6),
   constraint pk_project_phase primary key (id)
 );
 
@@ -102,22 +105,14 @@ create table task (
 
 alter table inbox add constraint fk_inbox_user_id foreign key (user_id) references my_user (id) on delete restrict on update restrict;
 
-alter table message add constraint fk_message_thread_id foreign key (thread_id) references message_thread (id) on delete restrict on update restrict;
-create index ix_message_thread_id on message (thread_id);
-
-alter table message_thread add constraint fk_message_thread_inbox_id foreign key (inbox_id) references inbox (id) on delete restrict on update restrict;
-create index ix_message_thread_inbox_id on message_thread (inbox_id);
+alter table my_user add constraint fk_my_user_user_id foreign key (user_id) references my_user (id) on delete restrict on update restrict;
 
 
 # --- !Downs
 
 alter table inbox drop foreign key fk_inbox_user_id;
 
-alter table message drop foreign key fk_message_thread_id;
-drop index ix_message_thread_id on message;
-
-alter table message_thread drop foreign key fk_message_thread_inbox_id;
-drop index ix_message_thread_inbox_id on message_thread;
+alter table my_user drop foreign key fk_my_user_user_id;
 
 drop table if exists assignment;
 

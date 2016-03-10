@@ -11,4 +11,15 @@ public class MessageThreadLogic {
         this.subject = subject;
         this.messages = new ArrayList<MessageLogic>();
     }
+    public void addMessage(MessageLogic m){
+    	this.messages.add(m);
+    }
+    
+    public String getSubject(){
+    	return this.subject;
+    }
+    
+    public MessageLogic getLastMessage(){
+    	return messages.get(messages.size() - 1);
+    }
 }

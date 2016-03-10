@@ -10,15 +10,17 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class MessageThread extends Model {
 
-    public MessageThread(){
-    
+    public MessageThread(String subject){
+    	this.subject = subject;
     }
 
     @OneToMany()
     public Message message;
+    
+    @ManyToOne()
+    public Inbox inbox;
     
     @Id
     private long id;

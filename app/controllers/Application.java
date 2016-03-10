@@ -36,7 +36,7 @@ public static class Login {
         if (LogicInterface.validateUser(loginForm.data().get("email"), loginForm.data().get("password"))) {
             session("userId", loginForm.data().get("email"));
             // return to profile of user
-            return  ok();
+            return  ok("login successfull");
         }
         System.out.println("User passet ghalate");
         return ok(LogIn.render("ورود", "نام کاربری یا گذرواژه نادرست است", Form.form(Login.class)));
@@ -49,6 +49,9 @@ public static class Login {
     }
 
     public Result LogIn() {
+
+    	Long x = new Long(1);
+    	LogicInterface.f(x);
         return ok(
                 LogIn.render("ورود"," ", Form.form(Login.class))
         );
@@ -78,14 +81,13 @@ public static class Login {
     public Result MessageThread(){
         return ok(MessageThread.render("ریسه ی ‍‍پیام", LogicInterface.getUser(x)));
     }
-
+*/
     public Result Inbox(){
-    	Long x = new Long(1);
-    	LogicInterface.f(x);
-        return ok(Inbox.render("صندوق پیام", LogicInterface.getUser(x)));
+    	Long x = new Long(90105992);
+        return ok(Inbox.render("صندوق پیام", LogicInterface.getUser(x), LogicInterface.getInbox(x).getThreads()));
     }
 
-    public Result Upload(Long id){
+/*    public Result Upload(Long id){
         return ok(UploadBox.render("صندوق بارگذاری", LogicInterface.getUser(x)) );
     }
 

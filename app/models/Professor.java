@@ -18,9 +18,9 @@ public class Professor extends MyUser {
     	super(id, fname, lname, password, email);
     }
     
-    @OneToOne()
-    public MyUser user;
-    
+//    @OneToOne()
+//    public MyUser user;
+//    
     @Constraints.Min(10)
     public Long StudentID;
     @Id

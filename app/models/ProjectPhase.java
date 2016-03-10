@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import com.avaje.ebean.Model;
+import com.avaje.ebean.Model.Finder;
 
 
 /**
@@ -14,10 +15,12 @@ import com.avaje.ebean.Model;
 @Entity
 public class ProjectPhase extends Model  {
 
-//    @Formats.DateTime(pattern="dd/MM/yyyy")
-    public Date deadline = new Date();
+    //@Formats.DateTime(pattern="dd/MM/yyyy")
+    public String deadline;
     @Id
     private long id;
+
+    public static Finder<Long, ProjectPhase> find = new Finder<Long,ProjectPhase>(ProjectPhase.class);
 
 
 }

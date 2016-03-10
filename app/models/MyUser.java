@@ -35,8 +35,8 @@ public class MyUser extends Model {
     @Constraints.Required
     public String eaddress;
 
-    @Constraints.Required
-    public long inboxID;
+//    @Constraints.Required
+    public long inboxID;	
 
     public static Finder<Long, MyUser> find = new Finder<Long,MyUser>(MyUser.class);
 }

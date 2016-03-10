@@ -11,4 +11,12 @@ public class MailSystemLogic {
     public MailSystemLogic(){
         this.messages = new ArrayList<>();
     }
+    
+    public void addMessageThread(MessageThreadLogic email){
+    	this.messages.add(email);
+    }
+    
+    public ArrayList<MessageThreadLogic> getThreads(){
+    	return this.messages;
+    }
 }

@@ -10,14 +10,14 @@ import play.data.validation.*;
 @Entity
 @DiscriminatorValue("aStudent")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Student extends User {
+public class Student extends MyUser {
 
     public Student(Long id){
     	super(id, "", "", "", "");
     }
     
     @OneToOne()
-    public User user;
+    public MyUser user;
     
     @Constraints.Min(10)
     public Long StudentID;

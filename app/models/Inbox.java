@@ -1,3 +1,4 @@
+
 package models;
 
 /**
@@ -13,13 +14,13 @@ import java.util.*;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Inbox extends Model {
-
-    public Inbox(){
-
-    }
-
+	
     @OneToOne()
-    public User user;
+    public MyUser user;
 
+    @OneToMany()
+    public MessageThread threads;
+    
+    
     public static Finder<Long, Inbox> find = new Finder<Long,Inbox>(Inbox.class);
 }

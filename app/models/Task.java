@@ -1,5 +1,12 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+import com.avaje.ebean.Model;
+
 /**
  * Created by pegah on 3/10/16.
  */
@@ -10,6 +17,9 @@ public class Task extends Model {
     public Task(){
 
     }
+    
+    @Id
+    private long id;
 
 
 }

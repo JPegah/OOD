@@ -1,26 +1,30 @@
 package models;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 import com.avaje.ebean.Model;
+
 import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
 @DiscriminatorValue("aProfessor")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Professor extends User {
+public class Professor extends MyUser {
 
-    public Professor(Long id){
-    	super(id);
+    public Professor(Long id, String fname, String lname, String password, String email){
+    	super(id, fname, lname, password, email);
     }
     
     @OneToOne()
-    public User user;
+    public MyUser user;
     
     @Constraints.Min(10)
     public Long StudentID;
+    @Id
+    private long id;
 
     public static Finder<Long, Professor> find = new Finder<Long,Professor>(Professor.class);
 }

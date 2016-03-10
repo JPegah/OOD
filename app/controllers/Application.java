@@ -34,16 +34,17 @@ public static class Login {
     
 
         if (LogicInterface.validateUser(loginForm.data().get("email"), loginForm.data().get("password"))) {
-            session("userName", loginForm.data().get("email"));
+            session("userId", loginForm.data().get("email"));
             // return to profile of user
             return  ok();
         }
+        System.out.println("User passet ghalate");
         return ok(LogIn.render("ورود", "نام کاربری یا گذرواژه نادرست است", Form.form(Login.class)));
     }
 
 
     public Result LogOut(){
-        session.clear();
+        session().clear();
         return redirect("/LogIn");
     }
 
@@ -57,9 +58,9 @@ public static class Login {
         String value = session().get("userName");
         System.out.println(value);
     	Long x = new Long(90105978);
-      //  return ok();
-    	LogicInterface.f(x);
-        return ok(Courses.render("لیست دروس",LogicInterface.getUser(x)));
+        return ok();
+    	//LogicInterface.f(x);
+        //return ok(Courses.render("لیست دروس",LogicInterface.getUser(x)));
     }
 //
 //    public Result LogIn(){

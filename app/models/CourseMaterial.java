@@ -1,7 +1,9 @@
 package models;
 
-import com.sun.media.sound.ModelSource;
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import com.avaje.ebean.Model;
 
 /**
  * Created by pegah on 3/10/16.
@@ -12,5 +14,7 @@ public class CourseMaterial extends Model{
     public CourseMaterial(){
 
     }
+    @Id
+    private long id;
 
 }

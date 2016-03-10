@@ -5,5 +5,4 @@ package LogicClasses;
  */
 public class CourseGroupLogic extends CourseLogic {
 
-
 }

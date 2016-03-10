@@ -34,8 +34,20 @@ public static class Login {
     }
 
 }
- 
-	
+    public static Result authenticate() {
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        return ok();
+//        if (loginForm.hasErrors()) {
+//            return badRequest(login.render(loginForm));
+//        } else {
+//            session().clear();
+//            session("email", loginForm.get().email);
+//            return redirect(
+//                    routes.Application.index()
+//            );
+//        }
+    }
+
 
 	public String validate() {
 		if (Login.authenticate(email, password) == null)

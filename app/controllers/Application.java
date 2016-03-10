@@ -7,6 +7,7 @@ import views.html.ChangePass;
 import views.html.LogIn;
 import views.html.*;
 import LogicInterfaces.LogicInterface;
+import java.util.*;
 
 
 
@@ -18,55 +19,47 @@ public class Application extends Controller {
 public static class Login {
      public String email;
      public String password;
-
-
-    public static Result authenticate() {
-        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-        return ok();
-     //   if (loginForm.hasErrors()) {
-           // return badRequest(login.render(loginForm));
-    //    } else {
-         //   session().clear();
-       //     session("email", loginForm.get().email);
- //           retusrn redirect(
-//                    routes.Application.index()
-//            );
-      //  }
-    }
 }
 
 
-public Result authenticate() {
-    System.out.println(request().body().asFormUrlEncoded());
-    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+    public Result authenticate() {
+        System.out.println(request().body().asFormUrlEncoded());
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 
-    if (loginForm.hasErrors()){
-        System.err.println("errors");
-    }
-    if (loginForm.data() != null)
-        System.out.println(loginForm.data().get("password"));
+        if (loginForm.hasErrors()){
+            System.err.println("errors");
+        }
+        if (loginForm.data() != null)
+            System.out.println(loginForm.data().get("password"));
     
 
-        if (LogicInterface.validateUser(loginForm.data().get("email"), loginForm.data().get("password")))
+        if (LogicInterface.validateUser(loginForm.data().get("email"), loginForm.data().get("password"))) {
             session("userName", loginForm.data().get("email"));
-
-        return ok();
+            // return to profile of user
+            return  ok();
+        }
+        return ok(LogIn.render("ورود", "نام کاربری یا گذرواژه نادرست است", Form.form(Login.class)));
     }
 
+
+    public Result LogOut(){
+        session.clear();
+        return redirect("/LogIn");
+    }
 
     public Result LogIn() {
         return ok(
-                LogIn.render("ورود",Form.form(Login.class))
+                LogIn.render("ورود"," ", Form.form(Login.class))
         );
     }
 
     public Result Courses(){
         String value = session().get("userName");
         System.out.println(value);
-    	Long x = new Long(1);
-        return ok();
-    //	LogicInterface.f(x);
-     //   return ok(Courses.render("لیست دروس",LogicInterface.getUser(x)));
+    	Long x = new Long(90105978);
+      //  return ok();
+    	LogicInterface.f(x);
+        return ok(Courses.render("لیست دروس",LogicInterface.getUser(x)));
     }
 //
 //    public Result LogIn(){

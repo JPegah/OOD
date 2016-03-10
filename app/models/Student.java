@@ -22,5 +22,6 @@ public class Student extends User {
     @Constraints.Min(10)
     public Long StudentID;
 
+
     public static Finder<Long, Student> find = new Finder<Long,Student>(Student.class);
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class MessageThreadLogic {
     private String subject;
-    ArrayList<MessageLogic> messages;
+    public ArrayList<MessageLogic> messages;
     public MessageThreadLogic(String subject){
         this.subject = subject;
         this.messages = new ArrayList<MessageLogic>();

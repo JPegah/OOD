@@ -20,12 +20,10 @@ public class CourseMap extends Model {
     
     @OneToMany()
     public Student stu;
-    
-    @Id
-    @Constraints.Min(10)
-    public Long id;
 
-    
+    @OneToMany()
+    public CourseGroup coursegp;
+
 
     public static Finder<Long, Course> find = new Finder<Long,Course>(Course.class);
 }

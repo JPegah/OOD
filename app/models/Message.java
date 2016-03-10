@@ -21,5 +21,6 @@ public class Message extends Model {
     @Constraints.Min(10)
     public Long id;
 
+
     public static Finder<Long, Message> find = new Finder<Long,Message>(Message.class);
 }

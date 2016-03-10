@@ -24,23 +24,17 @@ public Result authenticate() {
 
 
 public static class Login {
-     public String email;
-     public String password;
+    public String email;
+    public String password;
 
-
-    public static Result authenticate() {
-        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-        return ok();
-        if (loginForm.hasErrors()) {
-            return badRequest(login.render(loginForm));
-        } else {
-            session().clear();
-            session("email", loginForm.get().email);
- //           return redirect(
-//                    routes.Application.index()
-//            );
-        }
+    public static String authenticate(String email, String password){
+        if (validateUser(email, password))
+            return null;
+        return "Invalid username or password";
     }
+
+}
+ 
 	
 
 	public String validate() {

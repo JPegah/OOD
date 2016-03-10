@@ -11,13 +11,13 @@ import play.data.validation.*;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User extends Model {
 
-    public User(Long id/*, String fname, String lname, String password, String eaddress*/){
+    public User(Long id, String fname, String lname, String password, String eaddress){
         this.id = id;
-      /*  this.fname = fname;
+        this.fname = fname;
         this.lname = lname;
         this.password = password;
         this.eaddress = eaddress;
-    */}
+    }
     
     @Id
     @Constraints.Min(10)

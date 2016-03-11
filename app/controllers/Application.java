@@ -26,20 +26,18 @@ public static class Login {
         System.out.println(request().body().asFormUrlEncoded());
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 
-        if (loginForm.hasErrors()){
-            System.err.println("errors");
+        if (loginForm.hasErrors() || loginForm.data() != null ){
+            return ok(LogIn.render("ورود"," خطا در برقراری ارتباط لطفا مجددا تلاش کنید", Form.form(Login.class)));
         }
-        if (loginForm.data() != null)
-            System.out.println(loginForm.data().get("password"));
-    
 
-        if (LogicInterface.validateUser(loginForm.data().get("email"), loginForm.data().get("password"))) {
+        String message = LogicInterface.validateUser(loginForm.data().get("email"), loginForm.data().get("password"));
+        if (message.length() <= 1) {
             session("userId", loginForm.data().get("email"));
             // return to profile of user
             return  ok("login successfull");
         }
-        System.out.println("User passet ghalate");
-        return ok(LogIn.render("ورود", "نام کاربری یا گذرواژه نادرست است", Form.form(Login.class)));
+
+        return ok(LogIn.render("ورود", message, Form.form(Login.class)));
     }
 
 
@@ -49,7 +47,7 @@ public static class Login {
     }
 
     public Result LogIn() {
-    	LogicInterface.addcourse();
+//    	LogicInterface.addcourse();
         return ok(
                 LogIn.render("ورود"," ", Form.form(Login.class))
         );
@@ -104,7 +102,7 @@ public static class Login {
 
    */ public Result CourseIndex(String id){
         return ok(views.html.CourseIndex.courseIndex.render("نمایه درس",LogicInterface.getUser(new Long(90105978)) ,LogicInterface.getCourseIndex(id)));
-    }
+   }
 /*
     public Result Exams(Long id, Long eId){
         return ok(views.html.CourseIndex.Exams.render("امتحانات",LogicInterface.getUser(x)));

@@ -10,7 +10,6 @@ import play.data.validation.*;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Course extends Model {
-
     public Course(String id, String name, String courseCode, String department){
         this.courseName = name;
         this.courseNum = courseCode;

@@ -20,11 +20,8 @@ public class Professor extends MyUser {
     
 //    @OneToOne()
 //    public MyUser user;
-//    
-    @Constraints.Min(10)
-    public Long StudentID;
-    @Id
-    private long id;
+//
+
 
     public static Finder<Long, Professor> find = new Finder<Long,Professor>(Professor.class);
 }

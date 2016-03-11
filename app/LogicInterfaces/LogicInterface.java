@@ -21,7 +21,6 @@ public class LogicInterface {
     public static Users getUser(Long id){
     	MyUser t = MyUser.find.byId(id);
         Users u = new Users(t.eaddress, t.fname, t.lname, Long.parseLong(t.password));
- 	    
  	    return u;
     }
     
@@ -99,10 +98,10 @@ public class LogicInterface {
     }
 
     public static void addcourse(){
-    	CourseGroup cg = new CourseGroup("se shanbe", "101", 1390, 2, 1, "OOD", "computer", "40401");
+    	CourseGroup cg = new CourseGroup("se shanbe", "101", 1390, 2, 1, "OOD", "computer", "40403");
     	System.out.print("this is course Id: " + cg.id);
-    	Professor p = new Professor(new Long(3), "raman", "ramsin", "1234", "22");
-    	Student s = new Student(new Long(89105901), "pegah", "jandaghi", "1234", "90105901");
+    	Professor p = new Professor(new Long(5), "raman", "ramsin", "1234", "22");
+    	Student s = new Student(new Long(89105902), "pegah", "jandaghi", "1234", "90105903");
     	cg.save();
     	p.save();
     	s.save();

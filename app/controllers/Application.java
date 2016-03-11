@@ -103,7 +103,7 @@ public static class Login {
     }
 
    */ public Result CourseIndex(String id){
-        return ok(views.html.CourseIndex.courseIndex.render("نمایه درس",LogicInterface.getUser(new Long(90105978)) ,LogicInterface.getCourseIndex("40401139021")));
+        return ok(views.html.CourseIndex.courseIndex.render("نمایه درس",LogicInterface.getUser(new Long(90105978)) ,LogicInterface.getCourseIndex(id)));
     }
 /*
     public Result Exams(Long id, Long eId){

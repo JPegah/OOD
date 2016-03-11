@@ -78,72 +78,31 @@
         <input type="checkbox">
     </div>
     <div class="courseList">
+        @for(course <- courses) {
         <div class="course">
             <span class="col-md-9">
                 <div>
                     نیمسال دوم 92-93
                 </div>
                 <div>
-                    دانشکده مهندسی کامپیوتر
+                    دانشکده
+                    @course.getDepartment()
                 </div>
 
             </span>
             <span class="col-md-3">
                 <div><a href="CourseIndex/courseIndex.html">
-                    طراحی شئ گرای سیستم ها
+                    @course.getName()
                 </a></div>
 
             </span>
             <span>
                 <p>
-                    مدرس: دکتر رامسین
+                    @course.getProfessorName()
                 </p>
             </span>
         </div>
-        <div class="course">
-            <span class="col-md-9">
-                <div>
-                    نیمسال دوم 92-93
-                </div>
-                <div>
-                    دانشکده مهندسی کامپیوتر
-                </div>
-
-            </span>
-            <span class="col-md-3">
-                <div><a href="CourseIndex/courseIndex.html">
-                    طراحی شئ گرای سیستم ها
-                </a></div>
-
-            </span>
-            <span>
-                <p>
-                    مدرس: دکتر رامسین
-                </p>
-            </span>
-        </div>
-        <div class="course">
-            <span class="col-md-9">
-                <div>
-                    نیمسال دوم 92-93
-                </div>
-                <div>
-                    دانشکده مهندسی کامپیوتر
-                </div>
-
-            </span>
-            <span class="col-md-3">
-                <div><a href="CourseIndex/courseIndex.html">
-                    طراحی شئ گرای سیستم ها
-                </a></div>
-
-            </span>
-            <span>
-                <p>
-                    مدرس: دکتر رامسین
-                </p>
-            </span>
-        </div>
+        }
     </div>
 
 </div>

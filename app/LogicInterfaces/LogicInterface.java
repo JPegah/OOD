@@ -1,14 +1,20 @@
 package LogicInterfaces;
 
 import LogicClasses.*;
-import models.CourseGroup;
-import models.CourseMap;
-import models.Inbox;
-import models.Message;
-import models.MessageThread;
-import models.MyUser;
-import models.Professor;
-import models.Student;
+import LogicClasses.Course.CourseGroupLogic;
+import LogicClasses.MailSystem.MailSystemLogic;
+import LogicClasses.MailSystem.MessageLogic;
+import LogicClasses.MailSystem.MessageThreadLogic;
+import LogicClasses.User.ProfessorLogic;
+import LogicClasses.User.Users;
+import models.Course.CourseGroup;
+import models.Course.CourseMap;
+import models.MailSystem.Inbox;
+import models.MailSystem.Message;
+import models.MailSystem.MessageThread;
+import models.Users.MyUser;
+import models.Users.Professor;
+import models.Users.Student;
 
 import java.util.List;
 import java.util.ArrayList;

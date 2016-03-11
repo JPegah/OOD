@@ -49,9 +49,7 @@ public static class Login {
     }
 
     public Result LogIn() {
-
-    	Long x = new Long(1);
-    	LogicInterface.f(x);
+    	LogicInterface.addcourse();
         return ok(
                 LogIn.render("ورود"," ", Form.form(Login.class))
         );
@@ -90,12 +88,13 @@ public static class Login {
 /*    public Result Upload(Long id){
         return ok(UploadBox.render("صندوق بارگذاری", LogicInterface.getUser(x)) );
     }
-
+*/
 //    public Result CourseIndex(Long id){
-//        return ok(CourseIndex.courseIndex.render(""));
+//    	
+//        return ok(CourseIndex.courseIndex.render("", LogicInterface.getCourseIndex(id)));
 //    }
 
-    public Result Comment(Long id){
+ /*   public Result Comment(Long id){
         return ok(views.html.CourseIndex.comment.render("مشاهده نظرات",LogicInterface.getUser(x)));
     }
 
@@ -103,10 +102,10 @@ public static class Login {
         return ok(views.html.CourseIndex.newComment.render("افزودن نظر",LogicInterface.getUser(x)));
     }
 
-    public Result CourseIndex(Long id){
-        return ok(views.html.CourseIndex.courseIndex.render("نمایه درس",LogicInterface.getUser(x)));
+   */ public Result CourseIndex(String id){
+        return ok(views.html.CourseIndex.courseIndex.render("نمایه درس",LogicInterface.getUser(new Long(90105978)) ,LogicInterface.getCourseIndex("40401139021")));
     }
-
+/*
     public Result Exams(Long id, Long eId){
         return ok(views.html.CourseIndex.Exams.render("امتحانات",LogicInterface.getUser(x)));
     }

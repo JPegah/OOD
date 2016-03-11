@@ -14,7 +14,7 @@ import play.data.validation.*;
 public class CourseMap extends Model {
 
     public CourseMap(){
-	
+    	
     }
 
     @OneToMany()

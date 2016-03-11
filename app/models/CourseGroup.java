@@ -18,19 +18,26 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class CourseGroup extends Course {
 
-    public CourseGroup(int year, int tterm, int groupNumber, String name, String department, String courseNum){
-        super(name, courseNum, department);
+    public CourseGroup(String time, String place,int year, int tterm, int groupNumber, String name, String department, String courseNum){
+        super(courseNum + year + tterm + groupNumber, name, courseNum, department);
         this.term = tterm;
         this.year = year;
+        this.place = place;
+        this.time = time;
+        this.groupNumber = groupNumber;
     }
     
     public int year;
     public int term;
     public int groupNumber;
-
+    public String time;
+    public String place;
+    
+    @Id
+    public String id;
+    
     public ArrayList<CourseMaterial> cmat;
 
-    public static Finder<Long, CourseGroup> find = new Finder<Long,CourseGroup>(CourseGroup.class);
+    public static Finder<String, CourseGroup> find = new Finder<String,CourseGroup>(CourseGroup.class);
     
-
 }

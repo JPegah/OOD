@@ -16,13 +16,16 @@ create table comment_system (
 
 create table course (
   dtype                         varchar(10) not null,
-  course_num                    varchar(255) not null,
+  id                            varchar(255) not null,
   course_name                   varchar(255),
+  course_num                    varchar(255),
   department                    varchar(255),
   year                          integer,
   term                          integer,
   group_number                  integer,
-  constraint pk_course primary key (course_num)
+  time                          varchar(255),
+  place                         varchar(255),
+  constraint pk_course primary key (id)
 );
 
 create table course_map (

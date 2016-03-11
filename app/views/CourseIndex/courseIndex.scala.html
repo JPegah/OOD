@@ -1,4 +1,4 @@
-@(title:String)(user: LogicClasses.Users)
+@(title:String)(user: LogicClasses.Users)(course: LogicClasses.CourseGroupLogic)
 
 @CourseTemplate(title)(user){
 <h1></h1>
@@ -7,16 +7,19 @@
 <div class="rightBar col-md-7 col-md-offset">
 <div class="courseInd">
  <p class="name">
-     طراحی شئ گرای سیستم ها
+     @course.getName()
  </p>
     <p class="name">
-        مدرس: دکتر رامسین
+    مدرس:
+        @course.getProfessorName()
     </p>
     <p class="name">
-زمان برگزاری کلاس ها: یکشنبه و سه شنبه 1 تا 3
+زمان برگزاری کلاس ها: 
+@course.getTime()
     </p>
     <p class="name">
-        مکان: کلاس 101
+    مکان کلاس:
+     @course.getPlace()
     </p>
     <p class="name">
         دانشکده مهندسی کامپیوتر

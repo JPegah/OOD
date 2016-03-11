@@ -9,10 +9,20 @@ public class Users {
     private String lastName;
     private String email;
 
+    public Users(String email, String firstName, String lastName, Long password){
+    	this.email = email;
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.password = password;
+    }
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getName(){
+    	return firstName + " " + lastName;
+    }
+    
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

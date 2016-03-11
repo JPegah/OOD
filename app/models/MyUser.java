@@ -9,9 +9,9 @@ import play.data.validation.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class User extends Model {
+public class MyUser extends Model {
 
-    public User(Long id, String fname, String lname, String password, String eaddress){
+    public MyUser(Long id, String fname, String lname, String password, String eaddress){
         this.id = id;
         this.fname = fname;
         this.lname = lname;
@@ -38,5 +38,5 @@ public class User extends Model {
     @Constraints.Required
     public long inboxID;
 
-    public static Finder<Long, User> find = new Finder<Long,User>(User.class);
+    public static Finder<Long, MyUser> find = new Finder<Long,MyUser>(MyUser.class);
 }

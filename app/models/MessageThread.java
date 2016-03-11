@@ -1,9 +1,11 @@
 package models;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 import com.avaje.ebean.Model;
+
 import play.data.format.*;
 import play.data.validation.*;
 
@@ -12,10 +14,16 @@ import play.data.validation.*;
 public class MessageThread extends Model {
 
     public MessageThread(){
+    
     }
 
-    @OneToOne()
-    public Inbox inbox;
-
+    @OneToMany()
+    public Message message;
+    
+    @Id
+    private long id;
+    
+    public String subject;
+    
     public static Finder<Long, MessageThread> find = new Finder<Long,MessageThread>(MessageThread.class);
 }

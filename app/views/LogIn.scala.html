@@ -1,8 +1,11 @@
-@(title:String)(form: Form[Application.Login])
+@(title:String)(error: String)(form: Form[Application.Login])
 @FormTemplate(title){
 
 <div class="rightBar col-md-4 col-md-offset  RTOL">
     @helper.form(routes.Application.authenticate()){
+    <div class="error">
+        @error
+    </div>
     <div class="input-group">
 
 @helper.inputText(form("email"),'_label -> "نام کاربری")

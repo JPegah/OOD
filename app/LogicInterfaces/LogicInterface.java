@@ -1,16 +1,20 @@
 package LogicInterfaces;
 
 import LogicClasses.*;
+import models.CourseGroup;
 import models.User;
+
+import java.util.ArrayList;
+
 /**
  * Created by pegah on 3/8/16.
  */
 public class LogicInterface {
     public static Users getUser(Long id){
         Users u = new Users();
- 	User t = User.find.byId(id);
- 	u.setPassword(t.id);
- 	return u;
+ 	    User t = User.find.byId(id);
+ 	    u.setPassword(t.id);
+ 	    return u;
     }
 
     public static boolean validateUser(String email, String password){
@@ -30,4 +34,12 @@ public class LogicInterface {
     }
 
 
+
+    // find all courses of the given semester
+    public static ArrayList<CourseGroup> semesterCourses(int year, int semester){
+        ArrayList<CourseGroup>  courses = CourseGroup.find.where().like("year", year+"");
+        return courses;
+    }
+
+    
 }

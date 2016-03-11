@@ -22,7 +22,7 @@ public class CourseGroup extends Course {
     public int year;
 
     @Constraints.Required
-    public int tterm;
+    public int term;
 
     public ArrayList<CourseMaterial> cmat;
 

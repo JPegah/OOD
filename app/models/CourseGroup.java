@@ -11,20 +11,21 @@ import java.util.ArrayList;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class CourseGroup extends Course {
 
-    public CourseGroup(Long id, int year, int tterm){
-
-        super(id);
-        this.tterm = tterm;
+    public CourseGroup(Long id, int year, int tterm, int groupNumber, String name, String department, String courseNum){
+        super(name, courseNum, department);
+        this.term = tterm;
         this.year = year;
-    }
 
+    }
+    @Id
     @Constraints.Required
     public int year;
-
-    @Constraints.Required
     public int term;
+    public int groupNumber;
 
     public ArrayList<CourseMaterial> cmat;
+
+    public static Finder<Long, CourseGroup> find = new Finder<Long,CourseGroup>(CourseGroup.class);
 
 
 }

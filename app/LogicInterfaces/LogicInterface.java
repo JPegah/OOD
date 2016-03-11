@@ -2,6 +2,7 @@ package LogicInterfaces;
 
 import LogicClasses.*;
 import models.CourseGroup;
+import models.CourseMap;
 import models.User;
 
 import java.util.ArrayList;
@@ -37,9 +38,16 @@ public class LogicInterface {
 
     // find all courses of the given semester
     public static ArrayList<CourseGroup> semesterCourses(int year, int semester){
-        ArrayList<CourseGroup>  courses = CourseGroup.find.where().like("year", year+"");
+        ArrayList<CourseGroup>  courses = CourseGroup.find.where().like("year", year).where().like("term", semester);
+        ArrayList<CourseGroupLogic> groups = new ArrayList<CourseGroupLogic>();
+        for (int i = 0; i < courses.size(); i++){
+            CourseGroup c = courses.get(i);
+            CourseGroupLogic tmp = new CourseGroupLogic(c.courseNum, c.department, c.courseName);
+            CourseMap mp = CourseMap.find.where().like("coursegp", c);
+            tmp.setProfessorName(mp.prof.fname + " " + mp.prof.lname);
+        }
         return courses;
     }
 
-    
+
 }

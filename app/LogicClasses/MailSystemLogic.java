@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by pegah on 3/9/16.
  */
 public class MailSystemLogic {
-    ArrayList<MessageThread> messages;
+    ArrayList<MessageThreadLogic> messages;
 
     public MailSystemLogic(){
         this.messages = new ArrayList<>();

@@ -14,9 +14,8 @@ public class MessageThread extends Model {
     public MessageThread(){
     }
 
-    @Id
-    @Constraints.Min(10)
-    public Long id;
+    @OneToOne()
+    public Inbox inbox;
 
     public static Finder<Long, MessageThread> find = new Finder<Long,MessageThread>(MessageThread.class);
 }

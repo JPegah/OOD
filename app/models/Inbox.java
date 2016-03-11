@@ -18,11 +18,8 @@ public class Inbox extends Model {
 
     }
 
-    @Id
-    @Constraints.Min(10)
-    public Long id;
-
-
+    @OneToOne()
+    public User user;
 
     public static Finder<Long, Inbox> find = new Finder<Long,Inbox>(Inbox.class);
 }

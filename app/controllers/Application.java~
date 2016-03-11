@@ -6,7 +6,7 @@ import play.mvc.*;
 import play.data.Form;
 
 import views.html.*;
-
+import java.util.*;
 
 
 
@@ -15,40 +15,41 @@ public class Application extends Controller {
 //    public Result index() {
 //        return ok(index.render("Your new application is ready."));
 //    }
-public Result authenticate() {
-	Form<Login> loginForm = Form.form(Login.class);
-    Login login = loginForm.bindFromRequest().get();
-    System.out.print(login.email);
-    return ok("");
-}
-    public String validate() {
-        System.out.print("hello pegah");
-        //if (User.authenticate(email, password) == null) {
-      //      return "Invalid user or password";
-        //}
-        return null;
-    }
+public static class Login {
+     public String email = "default";
+     public String password = "default";
 
-//    public static Result authenticate() {
-//        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-//        return ok();
-//        if (loginForm.hasErrors()) {
-//            return badRequest(login.render(loginForm));
-//        } else {
-//            session().clear();
-//            session("email", loginForm.get().email);
-//            return redirect(
+
+    public static Result authenticate() {
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        return ok();
+  //      if (loginForm.hasErrors()) {
+           // return badRequest(login.render(loginForm));
+    //    } else {
+         //   session().clear();
+       //     session("email", loginForm.get().email);
+ //           return redirect(
 //                    routes.Application.index()
 //            );
-//        }
-//    }
-
-    public static class Login {
-
-        public String email;
-        public String password;
-
+      //  }
     }
+}
+
+
+public Result authenticate() {
+System.out.println(request().body().asFormUrlEncoded());
+	Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+    Login login = loginForm.get();
+    System.out.print(login.email);
+    System.out.print(login.password);
+    Map<String,String> anyData = new HashMap();
+anyData.put("email", "bob@gmail.com");
+anyData.put("password", "secret");
+    Login l = loginForm.bind(anyData).get();
+    System.out.print(l.email);
+    return ok();
+}
+
 
     public Result LogIn() {
         return ok(
@@ -149,6 +150,7 @@ public Result authenticate() {
     public Result ProjectEdit(Long id, Long p_id){
         return ok(views.html.CourseIndex.ProfView.ProjectsEdit.render("ویرایش پروژه",LogicInterface.getUser(x)));
     }
-*/
+
+}*/
 }
 

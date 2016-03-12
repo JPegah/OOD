@@ -13,18 +13,16 @@ import play.data.validation.*;
 @Entity
 public class CourseMap extends Model {
 
-    public CourseMap(){
+    public CourseMap(long p, long s, String cg){
+        this.prof = p;
+        this.stu = s;
+        this.coursegp = cg;
     	
     }
 
-    @OneToMany()
-    public Professor prof;
-    
-    @OneToMany()
-    public Student stu;
-
-    @OneToMany()
-    public CourseGroup coursegp;
+    public long  prof;
+    public long stu;
+    public String coursegp;
 
 
     @Id

@@ -2,10 +2,26 @@
     /*background-color: red;*/
 
 }
-body{
-    /*background-color: ;*/
+
+#headPanel{
+    background-color: darkblue;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    padding: 15px;;
 }
-.main{
+
+
+input{
+    min-height: 30px;
+    min-width: 200px;
+}
+body{
+    background-image: url("../images/education.jpg");
+}
+.logo{
+    background-image: url("../images/ARM1.jpg");
+    height: 100px;
+    width: 100px;
 }
 .inline{
     display: inline;
@@ -83,7 +99,8 @@ body{
 
 }
 .middle{
-    margin-right: 350px;
+    margin-right: 200px;
+    margin-left: 80px;
     min-width: 100px;
 }
 .left{
@@ -150,4 +167,12 @@ body{
 .error{
 	color: red;
 	font-weight: 300px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    padding: 8px;
+    padding-right: 90px;
+    border-color: whitesmoke;
+    background-color: transparent;
+
 }

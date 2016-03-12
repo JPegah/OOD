@@ -18,21 +18,24 @@ import java.util.ArrayList;
  * Created by pegah on 3/8/16.
  */
 public class LogicInterface {
+	// get the user with the given id
     public static Users getUser(Long id){
     	MyUser t = MyUser.find.byId(id);
         Users u = new Users(t.eaddress, t.fname, t.lname, Long.parseLong(t.password));
- 	    
  	    return u;
     }
-    
+
+	// find a course based on id for showing in course index page
     public static CourseGroupLogic getCourseIndex(String id){
     	CourseGroup cg = CourseGroup.find.byId(id);
     	CourseGroupLogic cgl = new CourseGroupLogic(cg.courseNum, cg.department, cg.courseName, cg.time, cg.place);
-    	//CourseMap cp = CourseMap.find.where().eq("coursegp", cg).findUnique();
-    	//cgl.setProfessor(new ProfessorLogic(cp.prof.eaddress, cp.prof.fname, cp.prof.lname, Long.parseLong(cp.prof.password)));
+    	CourseMap cp = CourseMap.find.where().eq("coursegp", id).findList().get(0);
+		Professor p = Professor.find.byId(cp.prof);
+    	cgl.setProfessor(new ProfessorLogic(p.eaddress, p.fname, p.lname, Long.parseLong(p.password)));
     	return cgl;
     }
 
+	// find mailSystem for a user + threads in his/her inbox
     public static MailSystemLogic getInbox(Long id){
     	Inbox inbox = Inbox.find.byId(id);
     	List<MessageThread> threads = MessageThread.find.where().eq("inbox", inbox).findList();
@@ -57,23 +60,27 @@ public class LogicInterface {
     		mail.addMessageThread(mtl);
     	}
     	
-    	
+
         //List<CourseGroup>  courses = CourseGroup.find.where().like("year", year+"").findList();
     	return mail;
     }
     
-    
-    public static boolean validateUser(String email, String password){
-       try {
+
+	// find user in database and check if username and password is valid
+    public static String validateUser(String email, String password){
+
+		try {
+//		   if (email.lenght == 0 || password.length == 0)
+//			   return "پر کردن خانه های ستاره دار الزامی است";
+//
     	   MyUser user = MyUser.find.byId(Long.parseLong(email));
     	   if (password.equals(user.password))
-    		   return true;
-    	   System.out.print("User passet dorost bud");
-    	   return false;
-       } catch (Exception e) {
-    	   System.out.print("hi loooser");
-    	   return false;
-       }
+    		   return "";
+
+    	   return "نام کاربری یا رمز عبور نادرست است";
+       } catch (Exception e){
+		   return "نام کاربری یا رمز عبور نادرست است";
+	   }
       
     }
 
@@ -99,19 +106,16 @@ public class LogicInterface {
     }
 
     public static void addcourse(){
-    	CourseGroup cg = new CourseGroup("se shanbe", "101", 1390, 2, 1, "OOD", "computer", "40401");
-    	System.out.print("this is course Id: " + cg.id);
-    	Professor p = new Professor(new Long(3), "raman", "ramsin", "1234", "22");
-    	Student s = new Student(new Long(89105901), "pegah", "jandaghi", "1234", "90105901");
+    	CourseGroup cg = new CourseGroup("se shanbe", "101", 1390, 2, 1, "OOD", "computer", "40408");
+
+		System.out.print("this is course Id: " + cg.id);
+    	Professor p = new Professor(new Long(15), "raman", "ramsin", "1234", "22");
+    	Student s = new Student(new Long(9010591), "pegah", "jandaghi", "1234", "9010591");
     	cg.save();
     	p.save();
     	s.save();
-    	CourseMap cm = new CourseMap();
-    	cm.prof = p;
-    	cm.stu = s;
-    	cm.coursegp = cg;
+    	CourseMap cm = new CourseMap(p.id, s.id, cg.id);
     	cm.save();
-    	
     }
 
     // find all courses of the given semester

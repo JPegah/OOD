@@ -30,6 +30,9 @@ create table course (
 
 create table course_map (
   id                            bigint auto_increment not null,
+  prof                          bigint,
+  stu                           bigint,
+  coursegp                      varchar(255),
   constraint pk_course_map primary key (id)
 );
 
